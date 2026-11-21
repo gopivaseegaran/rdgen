@@ -809,7 +809,7 @@ jobs:
             -H "Authorization: Bearer ${{ env.token }}" \
             -F "file=@$GITHUB_WORKSPACE/${{ env.filename }}-${{ matrix.job.arch }}.dmg" \
             "${{ env.apiServer }}/api/save_custom_client"
-      - {name: "Medvel - keep the dmg as a downloadable artifact", uses: actions/upload-artifact@v7, with: {name: "MedvelSupportDesk-mac-${{ matrix.job.arch }}", path: "${{ github.workspace }}/*.dmg", if-no-files-found: warn, retention-days: 30}}
+      - {name: "Medvel - keep the dmg as a downloadable artifact", uses: actions/upload-artifact@v7, with: {name: "${{ env.filename }}-mac-${{ matrix.job.arch }}", path: "${{ github.workspace }}/*.dmg", if-no-files-found: warn, retention-days: 30}}
 
   cleanup:
     needs: [build-for-macos]
