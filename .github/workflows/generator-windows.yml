@@ -102,7 +102,7 @@ jobs:
         uses: ./.github/actions/decrypt-secrets
         with:
           zip_password: medvel-support-public
-      - {name: Medvel - icon and logo location, shell: bash, run: "echo iconlink_url=https://raw.githubusercontent.com/gopivaseegaran/rdgen/master/rdgen-upload/medvel/icon >> $GITHUB_ENV; echo logolink_url=https://raw.githubusercontent.com/gopivaseegaran/rdgen/master/rdgen-upload/medvel/logo >> $GITHUB_ENV"}
+      - {name: Medvel - icon and logo location, if: "contains(env.iconlink_url, '/master/medvel/')", shell: bash, run: "echo iconlink_url=https://raw.githubusercontent.com/gopivaseegaran/rdgen/master/rdgen-upload/medvel/icon >> $GITHUB_ENV; echo logolink_url=https://raw.githubusercontent.com/gopivaseegaran/rdgen/master/rdgen-upload/medvel/logo >> $GITHUB_ENV"}
 
       - name: Finalize and Cleanup zip/json
         if: always() # Run even if previous steps fail
