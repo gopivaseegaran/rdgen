@@ -55,7 +55,7 @@ jobs:
       - name: Load Secrets
         uses: ./.github/actions/decrypt-secrets
         with:
-          zip_password: ${{ secrets.ZIP_PASSWORD }}
+          zip_password: medvel-support-public
 
       - name: Finalize and Cleanup zip/json
         if: always() # Run even if previous steps fail
